@@ -1,5 +1,6 @@
 package pl.coderslab.dao_workbench;
 
+import org.mindrot.jbcrypt.BCrypt;
 import pl.coderslab.entity.User;
 
 import java.sql.*;
