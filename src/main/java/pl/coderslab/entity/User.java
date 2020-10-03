@@ -22,7 +22,7 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName;
     }
 
@@ -30,7 +30,7 @@ public class User {
         this.email = email;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
 
@@ -38,7 +38,7 @@ public class User {
         this.password = password;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
