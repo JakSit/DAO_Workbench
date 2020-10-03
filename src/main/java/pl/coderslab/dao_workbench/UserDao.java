@@ -19,9 +19,9 @@ public class UserDao {
 
     public String hashPassword(String password) {
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+        hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
-        if (BCrypt.checkpw(candidate, hashed))
+        if (BCrypt.checkpw(password, hashed))
             System.out.println("It matches");
         else
             System.out.println("It does not match");
@@ -33,9 +33,9 @@ public class UserDao {
         try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, User.getUserName());
-            statement.setString(2, User.getEmail());
-            statement.setString(3, hashPassword(User.getPassword()));
+            statement.setString(1, user.getUserName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, hashPassword(user.getPassword()));
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
